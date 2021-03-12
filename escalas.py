@@ -1,5 +1,4 @@
-''' 
-Cabeçalho 
+''' Cabeçalho 
 
 ####    Autor: Gabriel Tomé Silveira    ####
 ####    contato: silveira.tomeg@usp.br  ####
@@ -30,7 +29,7 @@ Liscença: Copyright (c) 2021 Gabriel Tomé Silveira
 
 '''
 
-################# Funções principais do programa #######################
+################# Funções de escalas prontas #######################
 
 def Celsius_F():
     Tc = float(input('valor em °C: '))
@@ -60,43 +59,54 @@ def Kelvin_F():
 def F_Kelvin():
     Tf = float(input('Temperatura em °F: '))
     K = (Tf - 32) * (5/9) + 273.15 
-    print(f'A temperatura de {Tf}°F em K é de: {round(K,2)}K') 
+    print(f'A temperatura de {Tf}°F em K é de: {round(K,2)}K')
+
+
+#########################################################################
+
+################ Crie sua própria escala ################################
+
+def gen_C():
+
+    # ----------------- Referência em °C -----------------------------
+    nome_escala = input('Como chama a sua escala? ')
+    escala_apelido = input('Coloque uma abreviação: ')
+    Ta = float(input('Qual a temperatura de fusão da água na sua escala: '))
+    Tb = float(input('Qual a temperatura de ebulição da água na sua escala: '))
+    Tc = float(input('Qual a sua referência em °C: '))
+    gen1 = 1/100 * (Tc*(Tb - Ta)) + Ta
+    print(f'A temperatura que você colocou em {Tc}°C corresponde a {gen1}°{escala_apelido}')
+
+
+
+def gen_f():
+
+    # ---------------- Referencia em °F ------------------------------
+    nome_escala = input('Como chama a sua escala? ')
+    escala_apelido = input('Coloque uma abreviação: ')
+    Ta = float(input('Qual a temperatura de fusão da água na sua escala: '))
+    Tb = float(input('Qual a temperatura de ebulição da água na sua escala: '))
+    Tf = float(input('Qual a sua referência em °F: '))
+    gen2 = 1/180 * ((Tf - 32)*(Tb - Ta)) + Ta
+    print(f'A temperatura que você colocou em {Tf}°F corresponde a {gen2}°{escala_apelido}')
+
+
+
+
 
 #########################################################################
 
 ################# Função Principal do programa ##########################
 
-def main():
-    print()
-    print(' Título: Escalas Termométricas \n Escola: Marrie Currie Vestibulares \n Criador: Gabriel Tomé Silveira \n licença: MIT\n')
-    print('---------------------------------------------------------\n')
-    print('Vamos começar!')
-    print()
-    print('Qual escala termométrica você quer converter: \n [1].  °C --> °F \n [2].  °F --> °C \n [3].  °C -->  K \n [4].   K --> °C \n [5].   K --> °F \n [6].  °F -->  K \n [7].   Não quero realizar nem uma operação \n')
-    Escalas = int(input('Escolha entre o número de 1 a 7: '))
-
-    if Escalas == 1:
-        Celsius_F()
-    if Escalas == 2:
-        F_Celsius()
-    if Escalas == 3:
-        Celsius_Kelvin()
-    if Escalas == 4:
-        Kelvin_Celsius()
-    if Escalas == 5:
-        Kelvin_F()
-    if Escalas == 6:
-        F_Kelvin()
-    if Escalas == 7: 
-        print('Até mais meu amigo...')
-        
-    continua = input('Você quer continuar no programa?(S/N):\n ')
-
-    while continua == 'S':
+def main1():
+    #--------------- Programa rodando ----------------------------------
+    
+    Continua = 's'
+    while Continua == 's':
         print('Qual escala termométrica você quer converter: \n [1].  °C --> °F \n [2].  °F --> °C \n [3].  °C -->  K \n [4].   K --> °C \n [5].   K --> °F \n [6].  °F -->  K \n [7].   Não quero realizar nem uma operação \n')
 
         Escalas = int(input('Escolha entre o número de 1 a 7: '))
-
+    
         if Escalas == 1:
             Celsius_F()
         if Escalas == 2:
@@ -109,11 +119,39 @@ def main():
             Kelvin_F()
         if Escalas == 6:
             F_Kelvin()
-        if Escalas == 7:
-            print('Estou finalizando')
-            break
+        if Escalas == 7: 
+            print('Até mais meu amigo...')
+            Continua = 'n'
+
 ##########################################################################
 
 ################## Importando a Função ###################################
- 
-main()
+
+# --------------- Cabeçalho do programa ---------------------------
+print()
+print(' Título: Escalas Termométricas \n Escola: Marrie Currie Vestibulares \n Criador: Gabriel Tomé Silveira \n licença: MIT\n')
+print('---------------------------------------------------------\n')
+print('Vamos começar!')
+print()
+
+# -------------- Escolha do Usuario -------------------------------
+
+Escolha1 = int(input('Escolha qual função você quer: \n [1].    Criar uma própria Função \n [2].    Função Pré-definida \n Digite aqui: '))
+
+Continua2 = 'sim'
+while Continua2 == 'sim':
+    if Escolha1 == 1:
+        Escolha2 = int(input('Qual será a sua refrência: \n [1].    °C \n [2].    °F \n Digite aqui: '))
+        if Escolha2 == 1:
+            print('Ok, vamos começar!')
+            gen_C()
+        if Escolha2 == 2: 
+            print('Ótima Escolha!')
+            gen_f()
+        Continua2 = input('Você quer realizar mais alguma operação?(S/N): ')
+        if Continua2 == 'N':
+            print('Até mais :)')
+            break
+
+if Escolha1 == 2:
+    main1()
