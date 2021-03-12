@@ -138,20 +138,14 @@ print()
 
 Escolha1 = int(input('Escolha qual função você quer: \n [1].    Criar uma própria Função \n [2].    Função Pré-definida \n Digite aqui: '))
 
-Continua2 = 'sim'
-while Continua2 == 'sim':
-    if Escolha1 == 1:
-        Escolha2 = int(input('Qual será a sua refrência: \n [1].    °C \n [2].    °F \n Digite aqui: '))
-        if Escolha2 == 1:
-            print('Ok, vamos começar!')
-            gen_C()
-        if Escolha2 == 2: 
-            print('Ótima Escolha!')
-            gen_f()
-        Continua2 = input('Você quer realizar mais alguma operação?(S/N): ')
-        if Continua2 == 'N':
-            print('Até mais :)')
-            break
+if Escolha1 == 1:
+    Escolha2 = int(input('Qual será a sua refrência: \n [1].    °C \n [2].    °F \n Digite aqui: '))
+    if Escolha2 == 1:
+        print('Ok, vamos começar!')
+        gen_C()
+    elif Escolha2 == 2: 
+        print('Ótima Escolha!')
+        gen_f()
 
-if Escolha1 == 2:
+elif Escolha1 == 2:
     main1()
