@@ -4,7 +4,7 @@
 ####    github: @DeadSecs32             ####
 ####    data: 09/08/2020                ####
 ####    Marrie Currie Vestibulares      ####
-####    Título: Escalas Termométricas   ####
+####    Título: Reflexão Simulator      ####
 
 Liscença: Copyright (c) 2021 Gabriel Tomé Silveira
  Permission is hereby granted, free of charge, to any person obtaining a copy
